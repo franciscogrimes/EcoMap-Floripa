@@ -1,12 +1,7 @@
+import { useForm } from "react-hook-form";
 
-function cadastro(){
-    
-    return(
-        <>
-         <h1>Cadastro</h1>
-        </>
-    )
-
+function cadastro() {
+  return <></>;
 }
 
-export default cadastro
+export default cadastro;
