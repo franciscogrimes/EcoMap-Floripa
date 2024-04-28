@@ -1,0 +1,66 @@
+{
+  "usuarios": [
+    {
+      "nome": "Francisco Grimes da Silva",
+      "cpf": "08248985691",
+      "data_nasc": "18/12/2004",
+      "sexo": "Masculino",
+      "email": "franciscogrimes@qmagico.com.br",
+      "senha": "1234567890",
+      "cep": "88116550",
+      "bairro": "Rua Sideral",
+      "cidade": "Florianópolis",
+      "estado": "SC"
+    },
+    {
+      "nome": "Flávia Silvana Almeida",
+      "cpf": "54497324575",
+      "data_nasc": "09/03/2004",
+      "sexo": "Feminino",
+      "email": "flaviasilvanaalmeida@qmagico.com.br",
+      "senha": "4ERlDEULw1",
+      "cep": "76873140",
+      "bairro": "Setor 02",
+      "cidade": "Ariquemes",
+      "estado": "RO"
+    },
+    {
+      "nome": "Bruno Tiago Viana",
+      "cpf": "164.625.550-09",
+      "data_nasc": "14/03/2004",
+      "sexo": "Masculino",
+      "email": "brunotiagoviana@juliosimoes.com.br",
+      "senha": "9so9joAtaY",
+      "cep": "76806234",
+      "bairro": "Floresta",
+      "cidade": "Porto Velho",
+      "estado": "RO"
+    },
+    {
+      "nome": "Tânia Lara Cristiane das Neves",
+      "cpf": "66358515691",
+      "data_nasc": "18/01/2004",
+      "sexo": "Feminino",
+      "email": "tania_lara_dasneves@ssala.com.br",
+      "senha": "R6RYh25CXb",
+      "cep": "72235515",
+      "bairro": "Ceilândia Sul (Ceilândia)",
+      "cidade": "Brasília",
+      "estado": "DF"
+    },
+    {
+      "nome": "Allana Renata da Conceição",
+      "cpf": "36990096101",
+      "data_nasc": "02/04/2004",
+      "sexo": "Feminino",
+      "email": "allanarenatadaconceicao@live.com.br",
+      "senha": "7plt5R6hjN",
+      "cep": "69088738",
+      "bairro": "Jorge Teixeira",
+      "cidade": "Manaus",
+      "estado": "AM"
+    }
+  ],
+
+  "pontosColeta": [{}]
+}
