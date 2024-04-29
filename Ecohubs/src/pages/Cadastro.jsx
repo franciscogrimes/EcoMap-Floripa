@@ -6,7 +6,8 @@ import style from "./styles/Cadastro.module.css"
 function cadastro() {
   const { register } = useForm();
   return (
-    <>
+    <div>
+      <h1>Cadastro</h1>
       <form>
         <div>
           <h2>Dados pessoais:</h2>
@@ -68,10 +69,10 @@ function cadastro() {
           <Input type="text" name="neighborhood" text="Bairro:" />
           <Input type="text" name="city" text="Cidade:" />
           <Input type="text" name="state" text="Estado:" />
-        </div>
+        </div> 
         <button type="submit">Cadastrar</button>
       </form>
-    </>
+    </div>
   );
 }
 
