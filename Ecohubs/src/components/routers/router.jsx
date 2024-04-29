@@ -8,7 +8,7 @@ import Home from "../../pages/PaginaInicial"
 
     const router = createBrowserRouter([
         {
-          path: "/sign-in",
+          path: "/",
           element: <Login />,
         },
         {
