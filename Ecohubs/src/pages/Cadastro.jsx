@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import Input from "../components/form/form-input";
 import Select from "../components/form/form-select";
-import Submit from "../components/form/form-submit";
+import style from "./styles/Cadastro.module.css"
 
 function cadastro() {
   const { register } = useForm();

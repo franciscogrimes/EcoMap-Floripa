@@ -1,10 +1,7 @@
 {
   "dependencies": {
-<<<<<<< HEAD
     "react-hook-form": "^7.51.3",
-=======
     "boxicons": "^2.1.4",
->>>>>>> feature/json-server
     "react-router-dom": "^6.23.0"
   }
 }
