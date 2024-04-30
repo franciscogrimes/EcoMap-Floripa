@@ -4,16 +4,30 @@ export const UtilitsContext = createContext();
 
 export const UtilitsContextProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([]);
-  const [dadosCadastro, setDadosCadastro] = useState([])
+  const [dadosCadastro, setDadosCadastro] = useState([]);
 
-  // function PostCadastro(dadosCadastro){
-  //   fetch("http://localhost:3000/usuarios"){
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //   }
-  //   .then(resp => resp.json())
-  //   .then(dados => resp)
-  // }
+  async function cadastrarUsuario(dadosCadastrais) {
+    try {
+      const usuarioExistente = dados.find((usuario) => {
+        return usuario.email === dadosCadastrais.email;
+      });
+
+      if (usuarioExistente) {
+        throw new Error("O usuário já está cadastrado na plataforma");
+      } else {
+        const response = await fetch("http://localhost:3000/usuarios", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dadosCadastrais),
+        });
+        const dados = await response.json();
+        return dados;
+      }
+    } catch (error) {
+      console.error("Erro ao cadastrar usuário:", error);
+      throw error; // Lança o erro para ser tratado externamente, se necessário
+    }
+  }
 
   async function validaLogin(email, senha) {
     try {
@@ -45,7 +59,16 @@ export const UtilitsContextProvider = ({ children }) => {
   }
 
   return (
-    <UtilitsContext.Provider value={{ usuarios, setUsuarios, validaLogin}}>
+    <UtilitsContext.Provider
+      value={{
+        usuarios,
+        setUsuarios,
+        validaLogin,
+        dadosCadastro,
+        setDadosCadastro,
+        cadastrarUsuario,
+      }}
+    >
       {children}
     </UtilitsContext.Provider>
   );
