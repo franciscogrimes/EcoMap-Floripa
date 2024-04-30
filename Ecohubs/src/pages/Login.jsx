@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { LoginContext } from "../components/context/LoginContext";
+import { UtilitsContext } from "../components/context/UtilitsContext";
 import { Outlet } from "react-router-dom";
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
     senha: "",
   });
 
-  const { validaLogin } = useContext(LoginContext);
+  const { validaLogin } = useContext(UtilitsContext);
 
   async function validacao() {
     await validaLogin(usuario.email, usuario.senha);

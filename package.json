@@ -1,6 +1,10 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "boxicons": "^2.1.4",
+=======
+    "react-hook-form": "^7.51.3",
+>>>>>>> develop
     "react-router-dom": "^6.23.0"
   }
 }

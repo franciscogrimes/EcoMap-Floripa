@@ -1,9 +1,26 @@
 import { createContext, useState } from "react";
 
-export const LoginContext = createContext();
+export const UtilitsContext = createContext();
 
-export const LoginContextProvider = ({ children }) => {
+export const UtilitsContextProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([]);
+
+
+  // function PostCadastro(dados){
+  //   fetch("http://localhost:3000/usuarios")
+  //   .then(resp => resp.json())
+  //   .then(dados => )
+  // }
+  async function enderecoCompleto(){
+    if(!!cep){
+      fetch("https://viacep.com.br/ws/01001000/json/")
+      .then((resp) => resp.json())
+      .then(dados =>{
+        setValue()
+      })
+
+    }
+  }
 
   async function validaLogin(email, senha) {
     try {
@@ -35,8 +52,8 @@ export const LoginContextProvider = ({ children }) => {
   }
 
   return (
-    <LoginContext.Provider value={{ usuarios, setUsuarios, validaLogin }}>
+    <UtilitsContext.Provider value={{ usuarios, setUsuarios, validaLogin }}>
       {children}
-    </LoginContext.Provider>
+    </UtilitsContext.Provider>
   );
 };
