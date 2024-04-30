@@ -1,10 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+import { UtilitsContextProvider } from "./components/context/UtilitsContext.jsx";
+import router from "./components/routers/router.jsx";
+import { RouterProvider } from "react-router-dom";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <UtilitsContextProvider>
+    <RouterProvider router={router} />
+  </UtilitsContextProvider>
+);
