@@ -4,12 +4,15 @@ export const UtilitsContext = createContext();
 
 export const UtilitsContextProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([]);
+  const [dadosCadastro, setDadosCadastro] = useState([])
 
-
-  // function PostCadastro(dados){
-  //   fetch("http://localhost:3000/usuarios")
+  // function PostCadastro(dadosCadastro){
+  //   fetch("http://localhost:3000/usuarios"){
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //   }
   //   .then(resp => resp.json())
-  //   .then(dados => )
+  //   .then(dados => resp)
   // }
 
   async function validaLogin(email, senha) {

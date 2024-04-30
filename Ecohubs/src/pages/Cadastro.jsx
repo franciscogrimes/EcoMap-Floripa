@@ -1,15 +1,18 @@
 import { useForm } from "react-hook-form";
 
 
+
 function cadastro() {
   const { register,handleSubmit,setValue,getValues} = useForm();
 
   
     const enderecoCompleto = async () => {
-    let cep = getValues('cep')
-
-    if(!!cep){
-      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      
+      let CEP = getValues('cep')
+      
+      if(!!CEP && CEP.length == 8){
+      
+      await fetch(`https://viacep.com.br/ws/${CEP}/json/`)
       .then((resp) => resp.json())
       .then(dados =>{
         setValue("neighborhood",dados.bairro)
@@ -38,7 +41,7 @@ function cadastro() {
     
             <div>
                 <label htmlFor="gender">Gênero:</label>
-                <select name="gender">
+                <select name="gender" {...register("gender")}> 
                 <option>Selecione uma opção</option>
                 <option value='female'>Feminino</option>
                 <option value='male'>Masculino</option>
@@ -69,7 +72,7 @@ function cadastro() {
           <h2>Endereço:</h2>
 
             <label htmlFor="cep">CEP:</label>
-            <input type="number" name="cep" 
+            <input type="text" name="cep" 
             {...register("cep", {
                 required: true,
                 maxLength: 8,
@@ -77,15 +80,20 @@ function cadastro() {
                 onBlur: () => enderecoCompleto()
             })}
           />
-          <label htmlFor="neighborhood">Bairro:</label>
-            <input type="text" name="neighborhood"  />
+            <label htmlFor="neighborhood">Bairro:</label>
+            <input type="text" name="neighborhood"  
+            {...register("neighborhood")}/>
+
             <label htmlFor="city">Cidade:</label>
-            <input type="text"  name="city" />
+            <input type="text"  name="city" 
+            {...register("city")}/>
+            
             <label htmlFor="state">Estado:</label>
-            <input type="text" name="state" />
+            <input type="text" name="state" 
+            {...register("state")}/>
 
         </div>
-        <button type="submit">Cadastrar</button>
+        <input type="submit" value="Cadastrar" />
       </form>
     </>
   );
