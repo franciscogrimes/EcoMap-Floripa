@@ -1,13 +1,13 @@
 import Navbar from "../components/Navbar/Navbar"
-function criaPontos(){
+function listaPontos(){
     
     return(
         <>
         <Navbar/>
-        <h1>Criação de pontos</h1>
+        <h1>Pontos de coleta</h1>
         </>
     )
 
 }
 
-export default criaPontos
+export default listaPontos

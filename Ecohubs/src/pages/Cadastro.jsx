@@ -2,31 +2,38 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { UtilitsContext } from "../components/context/UtilitsContext";
 
-function cadastro() {
+function Cadastro() {
   const { register, setValue, getValues, handleSubmit } = useForm();
 
   const enderecoCompleto = async () => {
     let CEP = getValues("cep");
 
-    if (!!CEP && CEP.length == 8) {
-      await fetch(`https://viacep.com.br/ws/${CEP}/json/`)
-        .then((resp) => resp.json())
-        .then((dados) => {
-          setValue("neighborhood", dados.bairro);
-          setValue("city", dados.localidade);
-          setValue("state", dados.uf);
-        })
-        .catch((error) => console.log(error));
+    if (!!CEP && CEP.length === 8) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${CEP}/json/`);
+        const dados = await response.json();
+        setValue("neighborhood", dados.bairro);
+        setValue("city", dados.localidade);
+        setValue("state", dados.uf);
+      } catch (error) {
+        console.error("Erro ao obter dados do CEP:", error);
+      }
     }
   };
 
-  const { cadastraUsuario } = useContext(UtilitsContext);
-  const onSubmit = async (dadosForm) => {
-    await cadastraUsuario(dadosForm);
+  const { cadastrarUsuario } = useContext(UtilitsContext);
+  const onSubmit = async (formData) => {
+    try {
+      await cadastrarUsuario(formData);
+      // Lógica adicional após o cadastro, se necessário
+    } catch (error) {
+      console.error("Erro ao cadastrar usuário:", error);
+      // Tratar o erro de forma adequada
+    }
   };
 
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <h2>Dados pessoais:</h2>
@@ -106,8 +113,8 @@ function cadastro() {
         </div>
         <input type="submit" value="Cadastrar" />
       </form>
-    </>
+    </div>
   );
 }
 
-export default cadastro;
+export default Cadastro;
