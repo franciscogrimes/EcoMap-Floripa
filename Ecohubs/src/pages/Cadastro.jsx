@@ -1,73 +1,89 @@
 import { useForm } from "react-hook-form";
-import Input from "../components/form/form-input";
-import Select from "../components/form/form-select";
-import Submit from "../components/form/form-submit";
+
 
 function cadastro() {
-  const { register } = useForm();
+  const { register,handleSubmit,setValue,getValues} = useForm();
+
+  
+    const enderecoCompleto = async () => {
+    let cep = getValues('cep')
+
+    if(!!cep){
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((resp) => resp.json())
+      .then(dados =>{
+        setValue("neighborhood",dados.bairro)
+        setValue("city",dados.localidade)
+        setValue("state",dados.uf)
+      })
+      .catch(error => console.log(error))
+    }
+}
+
+
   return (
     <>
       <form>
         <div>
           <h2>Dados pessoais:</h2>
 
-          <Input
-            type="text"
-            name="name"
-            text="Nome Completo:"
+            <label htmlFor= "name">Nome Completo: </label>
+            <input type="text" name="name" 
             {...register("name", {
               required: true,
               maxLength: 50,
               minLength: 10,
             })}
           />
-
-          <Select
-            name="gender"
-            text="Selecione seu gênero:"
-            {...register("gender")}
-          />
-          <Input
-            type="number"
-            name="cpf"
-            text="CPF:"
+    
+            <div>
+                <label htmlFor="gender">Gênero:</label>
+                <select name="gender">
+                <option>Selecione uma opção</option>
+                <option value='female'>Feminino</option>
+                <option value='male'>Masculino</option>
+                <option value='other'>Outro</option>
+                </select>
+            </div>
+                <label htmlFor="cpf">CPF:</label>
+                <input type="number" name="cpf"  
             {...register("cpf", {
               maxLength: 11,
               minLength: 11,
             })}
           />
-          <Input type="date" name="birth" text="Data de nascimento:" />
-          <Input
-            type="email"
-            name="email"
-            text="Email:"
+        <label htmlFor="birth">Data de nascimento:</label>
+        <input type="date" name="birth"  />
+        <label htmlFor="email">Email:</label>
+        <input type="email" name="email" 
             {...register("email", {
               required: true,
             })}
           />
-          <Input
-            type="password"
-            name="password"
-            text="Senha:"
-            {...register("password", {})}
-          />
+          <label htmlFor="password">Senha:</label>
+      <input type="password" name="password" 
+        {...register("password", {})}
+        />
         </div>
         <div>
           <h2>Endereço:</h2>
 
-          <Input
-            type="number"
-            name="cep"
-            text="CEP:"
+            <label htmlFor="cep">CEP:</label>
+            <input type="number" name="cep" 
             {...register("cep", {
-              required: true,
-              maxLength: 8,
-              minLength: 8,
+                required: true,
+                maxLength: 8,
+                minLength: 8,
+                onBlur: () => enderecoCompleto()
             })}
           />
-          <Input type="text" name="neighborhood" text="Bairro:" />
-          <Input type="text" name="city" text="Cidade:" />
-          <Input type="text" name="state" text="Estado:" />
+          <label htmlFor="neighborhood">Bairro:</label>
+            <input type="text" name="neighborhood"  />
+            <label htmlFor="city">Cidade:</label>
+            <input type="text"  name="city" />
+            <label htmlFor="state">Estado:</label>
+            <input type="text" name="state" />
+
         </div>
         <button type="submit">Cadastrar</button>
       </form>

@@ -11,16 +11,6 @@ export const UtilitsContextProvider = ({ children }) => {
   //   .then(resp => resp.json())
   //   .then(dados => )
   // }
-  async function enderecoCompleto(){
-    if(!!cep){
-      fetch("https://viacep.com.br/ws/01001000/json/")
-      .then((resp) => resp.json())
-      .then(dados =>{
-        setValue()
-      })
-
-    }
-  }
 
   async function validaLogin(email, senha) {
     try {
@@ -52,7 +42,7 @@ export const UtilitsContextProvider = ({ children }) => {
   }
 
   return (
-    <UtilitsContext.Provider value={{ usuarios, setUsuarios, validaLogin }}>
+    <UtilitsContext.Provider value={{ usuarios, setUsuarios, validaLogin}}>
       {children}
     </UtilitsContext.Provider>
   );
