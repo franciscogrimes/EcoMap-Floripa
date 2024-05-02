@@ -5,6 +5,7 @@ import style from "./styles/PaginaInicial.module.css";
 import Maps from "leaflet";
 import MarkerIconUrl from "./assets/been-here-solid-60.png";
 import pontosColeta from "../../data/db.json";
+import { UtilitsContext } from "../components/context/UtilitsContext";
 
 function home() {
   const markerIcon = new Maps.Icon({
@@ -18,7 +19,9 @@ function home() {
       <Navbar />
       <div>
         <div>
-          <div></div>
+          <div>
+            <h3>Usuários ativos</h3>
+          </div>
         </div>
       </div>
 
