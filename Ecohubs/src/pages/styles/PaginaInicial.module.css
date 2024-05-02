@@ -1,3 +1,17 @@
+
+.infoGeral{
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
 .Leaflet_container {
   position: absolute;
   top: 0;

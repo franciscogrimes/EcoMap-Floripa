@@ -5,6 +5,7 @@ export const UtilitsContext = createContext();
 export const UtilitsContextProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([]);
   const [dadosCadastro, setDadosCadastro] = useState([]);
+  
 
   async function cadastrarUsuario(dadosCadastrais) {
     try {
@@ -58,6 +59,16 @@ export const UtilitsContextProvider = ({ children }) => {
     }
   }
 
+
+  // function usuariosCadastrados(){
+  //   fetch("http://localhost:3000/usuarios")
+  //   .then((resp) => resp.json())
+  //   .then((data) => {
+  //     const numeroDeUsuarios = data.length;
+  //     setNumeroDeUsuarios("Número de usuários cadastrados:", numeroDeUsuarios);
+  //   })
+  //   .catch((err) => console.log(err))
+  // }
   return (
     <UtilitsContext.Provider
       value={{
@@ -67,6 +78,7 @@ export const UtilitsContextProvider = ({ children }) => {
         dadosCadastro,
         setDadosCadastro,
         cadastrarUsuario,
+
       }}
     >
       {children}
