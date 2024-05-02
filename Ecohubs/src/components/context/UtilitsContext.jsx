@@ -58,13 +58,6 @@ export const UtilitsContextProvider = ({ children }) => {
     }
   }
 
-  function getUsuarios() {
-    fetch("http://localhost:3000/usuarios")
-      .then((response) => response.json())
-      .then((dados) => console.log(dados))
-      .catch(console.error(error));
-  }
-
   return (
     <UtilitsContext.Provider
       value={{
@@ -74,7 +67,6 @@ export const UtilitsContextProvider = ({ children }) => {
         dadosCadastro,
         setDadosCadastro,
         cadastrarUsuario,
-        getUsuarios,
       }}
     >
       {children}
