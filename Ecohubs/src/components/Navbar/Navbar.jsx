@@ -12,10 +12,10 @@ function Navbar() {
       </div>
       <div className={style.menus}>
         <Link to="/list-points" relative="path">
-          <a>Pontos de coleta</a>
+          Pontos de coleta
         </Link>
         <Link to="/create-points" relative="path">
-          <a>Adicionar ponto</a>
+          Adicionar ponto
         </Link>
       </div>
     </div>
