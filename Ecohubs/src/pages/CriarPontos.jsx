@@ -1,6 +1,25 @@
 import Navbar from "../components/Navbar/Navbar";
+
+
+
 function criaPontos() {
-  const { register, handleSubmit } = useForm();
+  const { register, setValue, getValue, handleSubmit } = useForm();
+
+  const enderecoCompleto = async () => {
+    let CEP = getValues("cep");
+
+    if (!!CEP && CEP.length === 8) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${CEP}/json/`);
+        const dados = await response.json();
+        setValue("neighborhood", dados.bairro);
+        setValue("city", dados.localidade);
+        setValue("state", dados.uf);
+      } catch (error) {
+        console.error("Erro ao obter dados do CEP:", error);
+      }
+    }
+  };
 
   return (
     <div>
@@ -54,24 +73,31 @@ function criaPontos() {
               <option value="other">Qualquer residuo</option>
             </select>
           </div>
-          <label htmlFor="cpf">CPF:</label>
+          <label htmlFor="cep">cep:</label>
+          <label htmlFor="cep">CEP:</label>
           <input
-            type="number"
-            name="cpf"
-            {...register("cpf", {
-              maxLength: 11,
-              minLength: 11,
+            type="text"
+            name="cep"
+            {...register("cep", {
+              required: true,
+              maxLength: 8,
+              minLength: 8,
+              onBlur: () => enderecoCompleto(),
             })}
           />
-          <label htmlFor="birth">Data de nascimento:</label>
-          <input type="date" name="birth" />
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="neighborhood">Bairro:</label>
           <input
-            type="email"
-            name="email"
-            {...register("email", {
-              required: true,
-            })}
+            type="text"
+            name="neighborhood"
+            {...register("neighborhood")}
+          />
+
+          <label htmlFor="city">Cidade:</label>
+          <input type="text" name="city" {...register("city")} />
+
+          <label htmlFor="state">Estado:</label>
+          <input type="text" name="state" {...register("state")} />
+          
         </form>
       </div>
     </div>

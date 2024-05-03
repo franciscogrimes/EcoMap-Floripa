@@ -7,8 +7,10 @@ import MarkerIconUrl from "./assets/been-here-solid-60.png";
 import pontosColeta from "../../data/db.json";
 import { useEffect, useState } from "react";
 import CardPonto from "../components/cardPontos/CardPonto";
+// import { Outlet } from "react-router-dom";
 
 function home() {
+
   // Mapa
   const markerIcon = new Maps.Icon({
     iconUrl: MarkerIconUrl,
