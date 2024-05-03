@@ -1,5 +1,11 @@
-
-.infoGeral{
+.Leaflet_container {
+  z-index: 0;
+  top: 0;
+  left: 0;
+  height: 70vh;
+  width: 100vw;
+}
+.infoGeral {
   height: 40vh;
   display: flex;
   align-items: center;
@@ -10,13 +16,11 @@
   left: 0;
   width: 100%;
 }
-
-
-.Leaflet_container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  height: 70vh;
+.cards {
+  padding-top: 200px;
+  height: 100%;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

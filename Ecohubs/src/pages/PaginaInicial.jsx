@@ -6,6 +6,7 @@ import Maps from "leaflet";
 import MarkerIconUrl from "./assets/been-here-solid-60.png";
 import pontosColeta from "../../data/db.json";
 import { useEffect, useState } from "react";
+import CardPonto from "../components/cardPontos/CardPonto";
 
 function home() {
   // Mapa
@@ -40,6 +41,20 @@ function home() {
       .catch((err) => console.log(err));
   }, []);
 
+  // Exibição de cards
+
+  const [dadosPontosColeta, setdadosPontosColeta] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/pontosColeta")
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+        setdadosPontosColeta(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className={style.container}>
       <Navbar />
@@ -47,7 +62,7 @@ function home() {
       <div>
         <MapContainer
           center={position}
-          zoom={13}
+          zoom={14}
           className={style.Leaflet_container}
         >
           <TileLayer
@@ -81,6 +96,16 @@ function home() {
         <div>
           <h1>Pontos de coletas cadastrados: {numeroPontos}</h1>
         </div>
+      </div>
+      <div className={style.cards}>
+        {dadosPontosColeta.map((ponto, index) => (
+          <CardPonto
+            nomeLocal={ponto.nomeLocal}
+            descricao={ponto.descricao}
+            residuos={ponto.residuos}
+            key={index}
+          />
+        ))}
       </div>
     </div>
   );
