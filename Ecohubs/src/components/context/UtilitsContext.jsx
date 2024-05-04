@@ -58,6 +58,16 @@ export const UtilitsContextProvider = ({ children }) => {
     }
   }
 
+  // async function cadastrarPonto(){
+  //   const require = await fetch("http://localhost:3000/pontosColeta", {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type':'application/json',
+  //     },
+  //     body: JSON.stringify(pntosColeta)
+  //   })
+  // }
+
   return (
     <UtilitsContext.Provider
       value={{

@@ -1,7 +1,8 @@
 import Navbar from "../components/Navbar/Navbar";
+import { useForm } from "react-hook-form";
 
 function criaPontos() {
-  const { register, setValue, getValue, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue, getValues } = useForm();
 
   const enderecoCompleto = async () => {
     let CEP = getValues("cep");
@@ -95,6 +96,7 @@ function criaPontos() {
           <label htmlFor="state">Estado:</label>
           <input type="text" name="state" {...register("state")} />
         </form>
+        <button type={handleSubmit(onsubmit)}></button>
       </div>
     </div>
   );
