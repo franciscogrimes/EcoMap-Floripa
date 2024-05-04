@@ -5,6 +5,7 @@ import Cadastro from "../../pages/Cadastro";
 import CriaPontos from "../../pages/CriarPontos";
 import Home from "../../pages/PaginaInicial";
 import PontosColeta from "../../pages/ListaPontos";
+import App from "../../App";
 
 let isAutenticado = JSON.parse(localStorage.getItem("isAutenticado")) || false;
 const PrivateRoute = ({ children }) => {
@@ -25,10 +26,14 @@ const router = createBrowserRouter([
     errorElement: <div>Not Found</div>,
     element: (
       <PrivateRoute>
-        <Home />
+        <App />
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "/create-points",
         element: <CriaPontos />,
