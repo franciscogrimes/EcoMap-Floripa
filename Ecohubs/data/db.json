@@ -64,9 +64,20 @@
       "bairro": "Jorge Teixeira",
       "cidade": "Manaus",
       "estado": "AM"
+    },
+    {
+      "id": "c590",
+      "name": "Francisco Grimes",
+      "gender": "male",
+      "cpf": "08207787961",
+      "email": "francisco@gmail.com",
+      "password": "123456",
+      "cep": "88110660",
+      "neighborhood": "Nossa Senhora do Rosário",
+      "city": "São José",
+      "state": "SC"
     }
   ],
-
   "pontosColeta": [
     {
       "id": "1",
@@ -74,7 +85,23 @@
       "descricao": "Todos os dias, das 7hrs às 12hrs e das 13hrs às 19hrs",
       "latitude": "-27.5904216",
       "longitude": "-48.5933437",
-      "residuos": "todos"
+      "residuos": "todos",
+      "cep": "69088756",
+      "neighborhood": "Coloninha",
+      "city": "Florianópolis",
+      "state": "SC"
+    },
+    {
+      "id": "1",
+      "localName": "Ecoponto Costeira",
+      "description": "De segunda a segunda das 7hrs até 19hrs",
+      "residos": "other",
+      "cep": "88047001",
+      "latitude": "-27.6264099",
+      "longitude": -48.5258186,
+      "neighborhood": "Costeira do Pirajubaé",
+      "city": "Florianópolis",
+      "state": "SC"
     }
   ]
 }

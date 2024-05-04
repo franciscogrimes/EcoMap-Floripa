@@ -22,17 +22,15 @@ function Cadastro() {
   };
 
   const { cadastrarUsuario } = useContext(UtilitsContext);
-  const onSubmit = async (formData) => {
-    try {
-      await cadastrarUsuario(formData);
-    } catch (error) {
-      console.error("Erro ao cadastrar usuário:", error);
-    }
-  };
+
+  function onSubmit(dadosCadastrais) {
+    console.log("Usuário Cadastrado com sucesso", dadosCadastrais);
+    cadastrarUsuario(dadosCadastrais);
+  }
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <div>
           <h2>Dados pessoais:</h2>
 
@@ -109,7 +107,7 @@ function Cadastro() {
           <label htmlFor="state">Estado:</label>
           <input type="text" name="state" {...register("state")} />
         </div>
-        <input onClick={handleSubmit(onSubmit)} value="Cadastrar" />
+        <button onClick={handleSubmit(onSubmit)}>Cadastrar Usuário</button>
       </form>
     </div>
   );
