@@ -25,10 +25,8 @@ function Cadastro() {
   const onSubmit = async (formData) => {
     try {
       await cadastrarUsuario(formData);
-      // Lógica adicional após o cadastro, se necessário
     } catch (error) {
       console.error("Erro ao cadastrar usuário:", error);
-      // Tratar o erro de forma adequada
     }
   };
 
@@ -111,7 +109,7 @@ function Cadastro() {
           <label htmlFor="state">Estado:</label>
           <input type="text" name="state" {...register("state")} />
         </div>
-        <input type="submit" value="Cadastrar" />
+        <input onClick={handleSubmit(onSubmit)} value="Cadastrar" />
       </form>
     </div>
   );

@@ -1,0 +1,26 @@
+.Leaflet_container {
+  z-index: 0;
+  top: 0;
+  left: 0;
+  height: 70vh;
+  width: 100vw;
+}
+.infoGeral {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.cards {
+  padding-top: 200px;
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

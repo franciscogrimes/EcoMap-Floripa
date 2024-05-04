@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 import { UtilitsContextProvider } from "./components/context/UtilitsContext.jsx";
 import router from "./components/routers/router.jsx";
