@@ -1,8 +1,11 @@
 import Navbar from "../components/Navbar/Navbar";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { UtilitsContext } from "../components/context/UtilitsContext";
 
 function criaPontos() {
   const { register, handleSubmit, setValue, getValues } = useForm();
+  const form = useForm();
 
   const enderecoCompleto = async () => {
     let CEP = getValues("cep");
@@ -18,6 +21,33 @@ function criaPontos() {
         console.error("Erro ao obter dados do CEP:", error);
       }
     }
+  };
+  function coordenadas() {
+    let CEP = getValues("cep");
+    const apiKey = "e35cd8562d6244afb998eeb2587acac9";
+
+    fetch(`https://api.opencagedata.com/geocode/v1/json?q=${CEP}&key=${apiKey}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.results.length > 0) {
+          const { lat, lng } = data.results[0].geometry;
+          console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+          setValue("latitude", lat);
+          setValue("longitude", lng);
+        } else {
+          console.error("Nenhum resultado encontrado para o CEP fornecido.");
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao obter dados de geolocalização:", error);
+      });
+  }
+
+  const { cadastrarPonto } = useContext(UtilitsContext);
+
+  const onSubmit = (dadosPonto) => {
+    console.log("Ponto de coleta cadastrado", dadosPonto);
+    cadastrarPonto(dadosPonto);
   };
 
   return (
@@ -80,9 +110,15 @@ function criaPontos() {
               required: true,
               maxLength: 8,
               minLength: 8,
-              onBlur: () => enderecoCompleto(),
+              onBlur: () => {
+                coordenadas(), enderecoCompleto();
+              },
             })}
           />
+          <label htmlFor="latitude">Latitude:</label>
+          <input type="text" name="latitude" {...register("latitude")} />
+          <label htmlFor="longitude">Longitude:</label>
+          <input type="text" name="longitude" {...register("longitude")} />
           <label htmlFor="neighborhood">Bairro:</label>
           <input
             type="text"
@@ -96,7 +132,7 @@ function criaPontos() {
           <label htmlFor="state">Estado:</label>
           <input type="text" name="state" {...register("state")} />
         </form>
-        <button type={handleSubmit(onsubmit)}></button>
+        <button onClick={handleSubmit(onSubmit)}>Cadastrar Ponto</button>
       </div>
     </div>
   );

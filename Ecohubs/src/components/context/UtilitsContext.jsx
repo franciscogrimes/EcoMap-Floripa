@@ -5,29 +5,37 @@ export const UtilitsContext = createContext();
 export const UtilitsContextProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([]);
   const [dadosCadastro, setDadosCadastro] = useState([]);
+  const [dadosPonto, setDadosPonto] = useState([]);
 
-  async function cadastrarUsuario(dadosCadastrais) {
-    try {
-      const usuarioExistente = dados.find((usuario) => {
-        return usuario.email === dadosCadastrais.email;
-      });
-
-      if (usuarioExistente) {
-        throw new Error("O usuário já está cadastrado na plataforma");
-      } else {
-        const response = await fetch("http://localhost:3000/usuarios", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(dadosCadastrais),
-        });
-        const dados = await response.json();
-        return dados;
-      }
-    } catch (error) {
-      console.error("Erro ao cadastrar usuário:", error);
-      throw error; // Lança o erro para ser tratado externamente, se necessário
-    }
+  function getUsuarios() {
+    fetch("http://localhost:3000/usuarios")
+      .then((resp) => resp.json())
+      .then((data) => setUsuarios(data)) // Atualiza o estado 'usuarios'
+      .catch((err) => console.error(err));
   }
+
+  // function cadastrarUsuario(dadosCadastrais) {
+  //   // Verificar se o usuário já está cadastrado
+  //   getUsuarios(dadosCadastrais){
+  //     const usuarioExistente = usuarios.find(
+  //       (usuario) => usuario.email === dadosCadastrais.email
+  //     );
+  //     if (usuarioExistente) {
+  //       alert("Usuário já possui cadastro na plataforma!");
+  //     } else {
+  //       fetch("http://localhost:3000/usuarios", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify(dadosCadastrais),
+  //       })
+  //         .then(() => {
+  //           alert("Usuário cadastrado com sucesso!");
+  //           window.location.href = "/login";
+  //         })
+  //         .catch(() => alert("Erro ao efetuar cadastro do usuário"));
+  //     }
+  //   };
+  // }
 
   async function validaLogin(email, senha) {
     try {
@@ -37,10 +45,10 @@ export const UtilitsContextProvider = ({ children }) => {
       let insertEmail = false;
 
       dados.map((usuario) => {
-        if (usuario.email == email) {
+        if (usuario.email === email) {
           console.log(email);
           insertEmail = true;
-          if (usuario.senha == senha) {
+          if (usuario.senha === senha) {
             localStorage.setItem("isAutenticado", true);
             console.log(senha);
             window.location.href = "/";
@@ -58,15 +66,17 @@ export const UtilitsContextProvider = ({ children }) => {
     }
   }
 
-  // async function cadastrarPonto(){
-  //   const require = await fetch("http://localhost:3000/pontosColeta", {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type':'application/json',
-  //     },
-  //     body: JSON.stringify(pntosColeta)
-  //   })
-  // }
+  function cadastrarPonto(dadosPonto) {
+    fetch("http://localhost:3000/pontosColeta", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dadosPonto),
+    })
+      .then(() => alert("Ponto de coleta cadastrado"))
+      .catch(() => alert("Erro ao realizar cadastro do ponto"));
+  }
 
   return (
     <UtilitsContext.Provider
@@ -75,8 +85,11 @@ export const UtilitsContextProvider = ({ children }) => {
         setUsuarios,
         validaLogin,
         dadosCadastro,
+        dadosPonto,
+        setDadosPonto,
         setDadosCadastro,
-        cadastrarUsuario,
+        cadastrarPonto,
+        getUsuarios,
       }}
     >
       {children}
