@@ -1,9 +1,7 @@
 import { useContext, useState } from "react";
 import { UtilitsContext } from "../components/context/UtilitsContext";
-import { Outlet } from "react-router-dom";
 
 export default function App() {
-  <Outlet />;
   const [usuario, setUsuario] = useState({
     email: "",
     senha: "",
