@@ -7,35 +7,18 @@ export const UtilitsContextProvider = ({ children }) => {
   const [dadosCadastro, setDadosCadastro] = useState([]);
   const [dadosPonto, setDadosPonto] = useState([]);
 
-  function getUsuarios() {
-    fetch("http://localhost:3000/usuarios")
-      .then((resp) => resp.json())
-      .then((data) => setUsuarios(data)) // Atualiza o estado 'usuarios'
-      .catch((err) => console.error(err));
+  function cadastrarUsuario(dadosCadastrais) {
+    fetch("http://localhost:3000/usuarios", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dadosCadastrais),
+    })
+      .then(() => {
+        alert("Usuário cadastrado com sucesso!");
+        window.location.href = "/login";
+      })
+      .catch(() => alert("Erro ao efetuar cadastro do usuário"));
   }
-
-  // function cadastrarUsuario(dadosCadastrais) {
-  //   // Verificar se o usuário já está cadastrado
-  //   getUsuarios(dadosCadastrais){
-  //     const usuarioExistente = usuarios.find(
-  //       (usuario) => usuario.email === dadosCadastrais.email
-  //     );
-  //     if (usuarioExistente) {
-  //       alert("Usuário já possui cadastro na plataforma!");
-  //     } else {
-  //       fetch("http://localhost:3000/usuarios", {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify(dadosCadastrais),
-  //       })
-  //         .then(() => {
-  //           alert("Usuário cadastrado com sucesso!");
-  //           window.location.href = "/login";
-  //         })
-  //         .catch(() => alert("Erro ao efetuar cadastro do usuário"));
-  //     }
-  //   };
-  // }
 
   async function validaLogin(email, senha) {
     try {
@@ -89,7 +72,7 @@ export const UtilitsContextProvider = ({ children }) => {
         setDadosPonto,
         setDadosCadastro,
         cadastrarPonto,
-        getUsuarios,
+        cadastrarUsuario,
       }}
     >
       {children}
