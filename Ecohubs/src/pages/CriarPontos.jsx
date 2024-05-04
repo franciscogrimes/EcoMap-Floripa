@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar/Navbar";
+
 function criaPontos() {
-  const { register, handleSubmit } = useForm();
+  const { register, setValue, getValue, handleSubmit } = useForm();
 
   const enderecoCompleto = async () => {
     let CEP = getValues("cep");

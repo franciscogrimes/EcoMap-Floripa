@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <div className={style.navbar}>
       <div className={style.icon}>
-        <Link to="/home" relative="path">
+        <Link to="/" relative="path">
           <box-icon name="recycle" color="#fefae0" size="lg"></box-icon>
         </Link>
       </div>
