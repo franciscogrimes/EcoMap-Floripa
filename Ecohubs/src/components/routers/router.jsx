@@ -1,9 +1,10 @@
 import * as React from "react";
-import { createBrowserRouter, Outlet, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import Login from "../../pages/Login";
 import Cadastro from "../../pages/Cadastro";
 import CriaPontos from "../../pages/CriarPontos";
 import Home from "../../pages/PaginaInicial";
+import PontosColeta from "../../pages/ListaPontos";
 
 let isAutenticado = JSON.parse(localStorage.getItem("isAutenticado")) || false;
 const PrivateRoute = ({ children }) => {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
+    errorElement: <div>Not Found</div>,
     element: (
       <PrivateRoute>
         <Home />
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/create-points",
         element: <CriaPontos />,
+      },
+      {
+        path: "/list-points",
+        element: <PontosColeta />,
       },
     ],
   },
