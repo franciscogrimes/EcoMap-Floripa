@@ -105,9 +105,9 @@
     },
     {
       "id": "1",
-      "localName": "Ecoponto Costeira",
-      "description": "De segunda a segunda das 7hrs até 19hrs",
-      "residos": "other",
+      "nomeLocal": "Ecoponto Costeira",
+      "descricao": "De segunda a segunda das 7hrs até 19hrs",
+      "residuos": "other",
       "cep": "88047001",
       "latitude": "-27.6264099",
       "longitude": -48.5258186,

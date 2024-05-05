@@ -7,19 +7,6 @@ export const UtilitsContextProvider = ({ children }) => {
   const [dadosCadastro, setDadosCadastro] = useState([]);
   const [dadosPonto, setDadosPonto] = useState([]);
 
-  function cadastrarUsuario(dadosCadastrais) {
-    fetch("http://localhost:3000/usuarios", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dadosCadastrais),
-    })
-      .then(() => {
-        alert("Usuário cadastrado com sucesso!");
-        window.location.href = "/login";
-      })
-      .catch(() => alert("Erro ao efetuar cadastro do usuário"));
-  }
-
   async function validaLogin(email, senha) {
     try {
       const response = await fetch("http://localhost:3000/usuarios");
@@ -47,6 +34,19 @@ export const UtilitsContextProvider = ({ children }) => {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  function cadastrarUsuario(dadosCadastrais) {
+    fetch("http://localhost:3000/usuarios", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dadosCadastrais),
+    })
+      .then(() => {
+        alert("Usuário cadastrado com sucesso!");
+        window.location.href = "/login";
+      })
+      .catch(() => alert("Erro ao efetuar cadastro do usuário"));
   }
 
   function cadastrarPonto(dadosPonto) {

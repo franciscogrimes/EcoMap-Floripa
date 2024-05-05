@@ -58,21 +58,21 @@ function criaPontos() {
       </div>
       <div>
         <form>
-          <label htmlFor="localName">Nome do local: </label>
+          <label htmlFor="nomeLocal">Nome do local: </label>
           <input
             type="text"
-            name="localName"
-            {...register("localName", {
+            name="nomeLocal"
+            {...register("nomeLocal", {
               required: true,
               maxLength: 50,
               minLength: 9,
             })}
           />
-          <label htmlFor="description">Descrição: </label>
+          <label htmlFor="descricao">Descrição: </label>
           <input
             type="text"
-            name="description"
-            {...register("description", {
+            name="descricao"
+            {...register("descricao", {
               required: true,
               maxLength: 200,
               minLength: 15,
@@ -90,8 +90,8 @@ function criaPontos() {
           />
 
           <div>
-            <label htmlFor="residos">Residuos:</label>
-            <select name="residos" {...register("residos")}>
+            <label htmlFor="residuos">Residuos:</label>
+            <select name="residuos" {...register("residuos")}>
               <option>Selecione uma opção</option>
               <option value="female">Vidro</option>
               <option value="male">Papel</option>
@@ -119,6 +119,7 @@ function criaPontos() {
           <input type="text" name="latitude" {...register("latitude")} />
           <label htmlFor="longitude">Longitude:</label>
           <input type="text" name="longitude" {...register("longitude")} />
+
           <label htmlFor="neighborhood">Bairro:</label>
           <input
             type="text"
