@@ -1,4 +1,69 @@
-*{
-    margin: 0;
-    box-sizing: border-box;
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fefae0;
+  text-decoration: none;
+  background-image: url("../assets/pexels-matheus-de-moraes-gugelmim-38060312-21405373.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+form {
+  box-sizing: border-box;
+  padding-top: 10px;
+  height: 90vh;
+  width: 50vw;
+  background-color: #283618;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  border-radius: 30px;
+}
+input {
+  margin: 5px 0;
+  padding-left: 20px;
+  border: none;
+  border-radius: 12px;
+  width: 20em;
+  height: 3em;
+  background-color: #606c38;
+  color: #fefae0;
+}
+select {
+  margin: 5px 0;
+  padding-left: 20px;
+  border: none;
+  border-radius: 12px;
+  width: 20em;
+  height: 3em;
+  background-color: #606c38;
+  color: #fefae0;
+  cursor: pointer;
+}
+.dadosPessoais {
+  display: flex;
+  gap: 15px;
+}
+.dpCol1 {
+  display: flex;
+  flex-direction: column;
+}
+.dpCol2 {
+  display: flex;
+  flex-direction: column;
+}
+.endereco {
+  display: flex;
+  gap: 15px;
+}
+.endCol1 {
+  display: flex;
+  flex-direction: column;
+}
+.endCol2 {
+  display: flex;
+  flex-direction: column;
 }

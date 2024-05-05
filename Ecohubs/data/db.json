@@ -76,6 +76,18 @@
       "neighborhood": "Nossa Senhora do Rosário",
       "city": "São José",
       "state": "SC"
+    },
+    {
+      "id": "467b",
+      "name": "Francisco Grimes",
+      "gender": "male",
+      "cpf": "08207787961",
+      "email": "FRanci@dwe.com",
+      "password": "123456",
+      "cep": "88110660",
+      "neighborhood": "Nossa Senhora do Rosário",
+      "city": "São José",
+      "state": "SC"
     }
   ],
   "pontosColeta": [
