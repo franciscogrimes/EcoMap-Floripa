@@ -1,4 +1,4 @@
-Nome do Software: EcoMap Floripa
+<h1>EcoMap Floripa</h1> 
 
 Descrição do Problema Resolvido:
 O EcoMap Floripa é uma aplicação web desenvolvida em React que tem como objetivo fornecer informações sobre pontos de coleta de lixo na cidade de Florianópolis, Santa Catarina.
