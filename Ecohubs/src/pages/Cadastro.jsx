@@ -4,7 +4,13 @@ import { UtilitsContext } from "../components/context/UtilitsContext";
 import style from "./styles/Cadastro.module.css";
 
 function Cadastro() {
-  const { register, setValue, getValues, handleSubmit } = useForm();
+  const {
+    register,
+    setValue,
+    getValues,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const enderecoCompleto = async () => {
     let CEP = getValues("cep");
@@ -40,11 +46,14 @@ function Cadastro() {
               type="text"
               name="name"
               {...register("name", {
-                required: true,
-                maxLength: 50,
-                minLength: 10,
+                required: "Campo obrigatório",
+                maxLength: { value: 50, message: "Máximo de 50 caracteres" },
+                minLength: { value: 10, message: "Mínimo de 10 caracteres" },
               })}
             />
+            {errors.name && (
+              <p className={style.error}>{errors.name.message}</p>
+            )}
 
             <label htmlFor="gender">Gênero:</label>
             <select name="gender" {...register("gender")}>
@@ -53,15 +62,17 @@ function Cadastro() {
               <option value="male">Masculino</option>
               <option value="other">Outro</option>
             </select>
+
             <label htmlFor="cpf">CPF:</label>
             <input
               type="number"
               name="cpf"
               {...register("cpf", {
-                maxLength: 11,
-                minLength: 11,
+                maxLength: { value: 11, message: "CPF inválido" },
+                minLength: { value: 11, message: "CPF inválido" },
               })}
             />
+            {errors.cpf && <p className={style.error}>{errors.cpf.message}</p>}
           </div>
           <div className={style.dpCol2}>
             <label htmlFor="birth">Data de nascimento:</label>
@@ -71,15 +82,24 @@ function Cadastro() {
               type="email"
               name="email"
               {...register("email", {
-                required: true,
+                required: "Campo obrigatório",
               })}
             />
+            {errors.email && (
+              <p className={style.error}>{errors.email.message}</p>
+            )}
+
             <label htmlFor="password">Senha:</label>
             <input
               type="password"
               name="password"
-              {...register("password", {})}
+              {...register("password", {
+                required: "Campo obrigatório",
+              })}
             />
+            {errors.password && (
+              <p className={style.error}>{errors.password.message}</p>
+            )}
           </div>
         </div>
         <h2>Endereço:</h2>
@@ -90,12 +110,14 @@ function Cadastro() {
               type="text"
               name="cep"
               {...register("cep", {
-                required: true,
-                maxLength: 8,
-                minLength: 8,
+                required: "Campo obrigatório",
+                maxLength: { value: 8, message: "CEP inválido" },
+                minLength: { value: 8, message: "CEP inválido" },
                 onBlur: () => enderecoCompleto(),
               })}
             />
+            {errors.cep && <p className={style.error}>{errors.cep.message}</p>}
+
             <label htmlFor="neighborhood">Bairro:</label>
             <input
               type="text"
