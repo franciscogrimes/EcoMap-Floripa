@@ -1,26 +1,46 @@
 .Leaflet_container {
   z-index: 0;
-  top: 0;
-  left: 0;
   height: 70vh;
-  width: 100vw;
+  width: 100%;
 }
 .infoGeral {
-  height: 40vh;
+  height: 50vh;
+  width: 10vw;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
+  background-color: #445128;
 }
-.cards {
-  padding-top: 200px;
-  height: 100%;
-  width: 100vw;
+.infoGeralDim {
   display: flex;
+  flex-direction: column;
+}
+.infoGeral h2 {
+  padding-bottom: 50px;
+  color: #fefae0;
+}
+.infoGeral h1 {
+  border: none;
+  background-color: #fefae0;
+  color: #283618;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.cards {
+  width: 100%;
+  background-color: #283618;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   justify-content: center;
   align-items: center;
+  padding: 15px 0;
+}
+.cards h2 {
+  padding: 20px 0;
+  color: #fefae0;
 }

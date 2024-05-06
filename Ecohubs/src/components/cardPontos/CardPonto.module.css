@@ -1,0 +1,28 @@
+.container {
+  width: 50vw;
+  height: 12.5em;
+  border-radius: 12px;
+  background-color: #606c38;
+  color: #fefae0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-right: 5px;
+}
+.mapContainer {
+  width: 100%;
+  height: 100%;
+  grid-column: 1;
+}
+.container h2 {
+  margin-bottom: 16px;
+}
+.container p {
+  margin-bottom: 3px;
+}
+.endereco {
+  padding-top: 10px;
+}

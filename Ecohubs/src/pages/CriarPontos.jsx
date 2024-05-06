@@ -93,13 +93,14 @@ function criaPontos() {
             <label htmlFor="residuos">Residuos:</label>
             <select name="residuos" {...register("residuos")}>
               <option>Selecione uma opção</option>
-              <option value="female">Vidro</option>
-              <option value="male">Papel</option>
-              <option value="other">Plastico</option>
-              <option value="other">Metal</option>
-              <option value="other">Bateria</option>
-              <option value="other">Orgânico</option>
-              <option value="other">Qualquer residuo</option>
+              <option value="vidro">Vidro</option>
+              <option value="papel">Papel</option>
+              <option value="plastico">Plastico</option>
+              <option value="metal">Metal</option>
+              <option value="bateria">Bateria</option>
+              <option value="organico">Orgânico</option>
+              <option value="entulhos">Entulho</option>
+              <option value="Todos">Qualquer residuo</option>
             </select>
           </div>
           <label htmlFor="cep">CEP:</label>
