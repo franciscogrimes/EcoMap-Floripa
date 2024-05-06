@@ -1,11 +1,11 @@
-<h1>EcoMap Floripa</h1> 
+<h1>EcoMap Floripa♻️</h1> 
 
 Descrição do Problema Resolvido:
 O EcoMap Floripa é uma aplicação web desenvolvida em React que tem como objetivo fornecer informações sobre pontos de coleta de lixo na cidade de Florianópolis, Santa Catarina.
 O problema que o software resolve está relacionado à necessidade de conscientização e facilidade de acesso a informações sobre locais adequados para descarte de resíduos, 
 contribuindo para a preservação do meio ambiente e para a promoção de práticas sustentáveis na comunidade.
 
-Técnicas e Tecnologias Utilizadas:
+<h3>Técnicas e Tecnologias Utilizadas:</h3>
 
 React: Framework JavaScript utilizado para o desenvolvimento da interface do usuário e demais paginas do software.
 viaCep: API utilizada para buscar informações de endereço a partir do CEP informado pelo usuário, facilitando o preenchimento automático de dados no cadastro de novos pontos de coleta.
@@ -15,11 +15,11 @@ OpenCage Geocoding API: API utilizada para complementar as informações de lati
 
 
 
-https://github.com/franciscogrimes/Ecohubs/assets/150201451/729084b7-4a7c-4996-b18b-162afcab3b65
+https://github.com/franciscogrimes/Ecohubs/assets/150201451/729084b7-4a7c-4996-b18b-162afcab3b65 width={200}
 
 
 
-✨Como Executar:
+<h3>✨Como Executar:</h3>
 
 Clone o repositório do projeto do GitHub para sua máquina local.
 Navegue até o diretório do projeto e instale as dependências utilizando o comando npm install.
@@ -30,7 +30,7 @@ Acesse a aplicação através do navegador web, digitando o endereço http://loc
 
 <h1>Momento aprendizagem</h1>
 
-Melhorias Futuras:
+<h3>Melhorias Futuras:</h3>
 
 Implementar autenticação de usuários para permitir que apenas administradores possam cadastrar novos pontos de coleta.
 Adicionar funcionalidades de busca e filtragem de pontos de coleta por tipo de resíduo ou localização.
