@@ -100,6 +100,42 @@
       "neighborhood": "Nossa Senhora do Rosário",
       "city": "São José",
       "state": "SC"
+    },
+    {
+      "id": "24ed",
+      "name": "Francisco Grimes",
+      "gender": "male",
+      "cpf": "08207787961",
+      "email": "sxasx@dqwd.com",
+      "password": "Aasdf",
+      "cep": "88110660",
+      "neighborhood": "Nossa Senhora do Rosário",
+      "city": "São José",
+      "state": "SC"
+    },
+    {
+      "id": "4812",
+      "name": "wegwegewmim",
+      "gender": "male",
+      "cpf": "08207787961",
+      "email": "FRanci@dwe.com",
+      "password": "123456",
+      "cep": "88110660",
+      "neighborhood": "Nossa Senhora do Rosário",
+      "city": "São José",
+      "state": "SC"
+    },
+    {
+      "id": "b4d4",
+      "name": "asxasxasasxas",
+      "gender": "male",
+      "cpf": "08207787962",
+      "email": "FRanci@dwe.com",
+      "password": "123456",
+      "cep": "88110660",
+      "neighborhood": "Nossa Senhora do Rosário",
+      "city": "São José",
+      "state": "SC"
     }
   ],
   "pontosColeta": [
