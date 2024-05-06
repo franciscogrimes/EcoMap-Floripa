@@ -1,0 +1,84 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../assets/pexels-cottonbro-6591427.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fefae0;
+}
+.form {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  background-color: #283618;
+  border-radius: 30px;
+}
+.title {
+  margin-bottom: 20px;
+}
+.idUsuario {
+  display: flex;
+  gap: 10px;
+}
+.local {
+  display: flex;
+  flex-direction: column;
+}
+.id {
+  display: flex;
+  flex-direction: column;
+}
+.descricao {
+  display: flex;
+  flex-direction: column;
+}
+.descricaoInput {
+  width: 42em;
+}
+.tipoLocal {
+  display: flex;
+  gap: 10px;
+}
+.residuos {
+  display: flex;
+  flex-direction: column;
+}
+.cep {
+  display: flex;
+  flex-direction: column;
+}
+.latLong {
+  display: flex;
+  gap: 10px;
+}
+.latitude {
+  display: flex;
+  flex-direction: column;
+}
+.longitude {
+  display: flex;
+  flex-direction: column;
+}
+.endereco {
+  display: flex;
+  gap: 10px;
+}
+.bairro {
+  display: flex;
+  flex-direction: column;
+}
+.cidade {
+  display: flex;
+  flex-direction: column;
+}
+.estado {
+  display: flex;
+  flex-direction: column;
+}

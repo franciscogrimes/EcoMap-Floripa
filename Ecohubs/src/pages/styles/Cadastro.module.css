@@ -10,7 +10,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-form {
+.form {
   box-sizing: border-box;
   padding-top: 10px;
   height: 90vh;

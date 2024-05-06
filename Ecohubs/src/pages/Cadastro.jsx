@@ -31,7 +31,7 @@ function Cadastro() {
 
   return (
     <div className={style.container}>
-      <form>
+      <form className={style.form}>
         <h2>Dados pessoais:</h2>
         <div className={style.dadosPessoais}>
           <div className={style.dpCol1}>
