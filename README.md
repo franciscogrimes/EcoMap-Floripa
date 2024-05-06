@@ -14,9 +14,8 @@ React Hook Form: Biblioteca utilizada para simplificar e gerenciar o formulário
 OpenCage Geocoding API: API utilizada para complementar as informações de latitude e longitude dos pontos de coleta, permitindo uma precisão maior na localização dos locais no mapa.
 
 
-<video width="500" controls>
-  <source src="(https://github.com/franciscogrimes/Ecohubs/assets/150201451/729084b7-4a7c-4996-b18b-162afcab3b65 width={200})" type="video/mp4">
-</video>
+
+  https://github.com/franciscogrimes/Ecohubs/assets/150201451/729084b7-4a7c-4996-b18b-162afcab3b65 
 
 
 
