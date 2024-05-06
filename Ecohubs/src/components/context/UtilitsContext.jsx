@@ -7,19 +7,6 @@ export const UtilitsContextProvider = ({ children }) => {
   const [dadosCadastro, setDadosCadastro] = useState([]);
   const [dadosPonto, setDadosPonto] = useState([]);
 
-  function cadastrarUsuario(dadosCadastrais) {
-    fetch("http://localhost:3000/usuarios", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dadosCadastrais),
-    })
-      .then(() => {
-        alert("Usuário cadastrado com sucesso!");
-        window.location.href = "/login";
-      })
-      .catch(() => alert("Erro ao efetuar cadastro do usuário"));
-  }
-
   async function validaLogin(email, senha) {
     try {
       const response = await fetch("http://localhost:3000/usuarios");
@@ -49,6 +36,19 @@ export const UtilitsContextProvider = ({ children }) => {
     }
   }
 
+  function cadastrarUsuario(dadosCadastrais) {
+    fetch("http://localhost:3000/usuarios", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dadosCadastrais),
+    })
+      .then(() => {
+        alert("Usuário cadastrado com sucesso!");
+        window.location.href = "/login";
+      })
+      .catch(() => alert("Erro ao efetuar cadastro do usuário"));
+  }
+
   function cadastrarPonto(dadosPonto) {
     fetch("http://localhost:3000/pontosColeta", {
       method: "POST",
@@ -59,6 +59,20 @@ export const UtilitsContextProvider = ({ children }) => {
     })
       .then(() => alert("Ponto de coleta cadastrado"))
       .catch(() => alert("Erro ao realizar cadastro do ponto"));
+  }
+
+  function removePonto(id) {
+    fetch(`http://localhost:3000/pontosColeta/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setDadosPonto(dadosPonto.filter((dadosPonto) => dadosPonto.id !== id));
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -73,6 +87,7 @@ export const UtilitsContextProvider = ({ children }) => {
         setDadosCadastro,
         cadastrarPonto,
         cadastrarUsuario,
+        removePonto,
       }}
     >
       {children}

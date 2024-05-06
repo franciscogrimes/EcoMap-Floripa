@@ -1,20 +1,18 @@
-import Navbar from "../components/Navbar/Navbar";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import style from "./styles/PaginaInicial.module.css";
 import Maps from "leaflet";
-import MarkerIconUrl from "./assets/been-here-solid-60.png";
+import MarkerIconUrl from "./assets/marker-icon.png";
 import pontosColeta from "../../data/db.json";
 import { useEffect, useState } from "react";
 import CardPonto from "../components/cardPontos/CardPonto";
 // import { Outlet } from "react-router-dom";
 
 function home() {
-
   // Mapa
   const markerIcon = new Maps.Icon({
     iconUrl: MarkerIconUrl,
-    iconSize: [35, 45],
+    iconSize: [25, 35],
   });
   const position = [-27.5937966, -48.5652894];
 
@@ -59,8 +57,6 @@ function home() {
 
   return (
     <div className={style.container}>
-      <Navbar />
-
       <div>
         <MapContainer
           center={position}
@@ -82,7 +78,6 @@ function home() {
               key={index}
             >
               <Popup>
-                Id: {ponto.id} <br />
                 Nome do Local: {ponto.nomeLocal} <br />
                 Descrição: {ponto.descricao} <br />
                 Resíduos: {ponto.residuos}
@@ -91,20 +86,30 @@ function home() {
           ))}
         </MapContainer>
       </div>
+
       <div className={style.infoGeral}>
-        <div>
-          <h1>Usuários ativos: {numeroUsuarios}</h1>
-        </div>
-        <div>
-          <h1>Pontos de coletas cadastrados: {numeroPontos}</h1>
+        <h2>Informações gerais:</h2>
+        <div className={style.infoGeralDim}>
+          <div className={style.usuarios}>
+            <h1>Usuários ativos: {numeroUsuarios}</h1>
+          </div>
+          <div className={style.pontos}>
+            <h1>Pontos de coletas cadastrados: {numeroPontos}</h1>
+          </div>
         </div>
       </div>
       <div className={style.cards}>
+        <h2>Conheça os pontos de coleta mais próximo de você!</h2>
         {dadosPontosColeta.map((ponto, index) => (
           <CardPonto
             nomeLocal={ponto.nomeLocal}
             descricao={ponto.descricao}
             residuos={ponto.residuos}
+            neighborhood={ponto.neighborhood}
+            city={ponto.city}
+            state={ponto.state}
+            latitude={ponto.latitude}
+            longitude={ponto.longitude}
             key={index}
           />
         ))}

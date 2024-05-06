@@ -35,11 +35,15 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/create-points",
+        path: "/create-points/:id",
         element: <CriaPontos />,
       },
       {
-        path: "/list-points",
+        path: "/create-points/",
+        element: <CriaPontos />,
+      },
+      {
+        path: "/list-points/",
         element: <PontosColeta />,
       },
     ],
