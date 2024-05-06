@@ -17,7 +17,12 @@ function Navbar() {
         <Link to="/create-points" relative="path">
           Adicionar ponto
         </Link>
-        <button onClick={() => localStorage.removeItem("isAutenticado")}>
+        <button
+          onClick={() => {
+            localStorage.removeItem("isAutenticado");
+            window.location.href = "/login";
+          }}
+        >
           Sair
         </button>
       </div>
