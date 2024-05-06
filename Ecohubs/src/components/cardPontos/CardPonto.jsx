@@ -1,7 +1,11 @@
 import style from "./CardPonto.module.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { UtilitsContext } from "../../components/context/UtilitsContext";
+import { useContext } from "react";
+import "boxicons";
 
 function CardPonto({
+  id,
   nomeLocal,
   descricao,
   residuos,
@@ -11,6 +15,11 @@ function CardPonto({
   latitude,
   longitude,
 }) {
+  const { removePonto } = useContext(UtilitsContext);
+  const handleRemove = () => {
+    removePonto(id);
+  };
+
   return (
     <div className={style.container}>
       <div className={style.mapContainer}>
@@ -33,8 +42,18 @@ function CardPonto({
         </MapContainer>
       </div>
       <div>
-        <div>
+        <div className={style.titleEdit}>
           <h2>{nomeLocal}</h2>
+          {window.location.pathname === "/list-points" && (
+            <>
+              <button>
+                <box-icon name="pencil" color="#fefae0"></box-icon>
+              </button>
+              <button onClick={() => handleRemove(id)}>
+                <box-icon name="trash" color="#fefae0"></box-icon>
+              </button>
+            </>
+          )}
         </div>
         <div>
           <p>Descrição: {descricao}</p>

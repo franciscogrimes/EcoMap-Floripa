@@ -61,6 +61,20 @@ export const UtilitsContextProvider = ({ children }) => {
       .catch(() => alert("Erro ao realizar cadastro do ponto"));
   }
 
+  function removePonto() {
+    fetch(`http://localhost:3000/pontosColeta/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setDadosPonto(dadosPonto.filter((dadosPonto) => dadosPonto.id !== id));
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <UtilitsContext.Provider
       value={{
@@ -73,6 +87,7 @@ export const UtilitsContextProvider = ({ children }) => {
         setDadosCadastro,
         cadastrarPonto,
         cadastrarUsuario,
+        removePonto,
       }}
     >
       {children}

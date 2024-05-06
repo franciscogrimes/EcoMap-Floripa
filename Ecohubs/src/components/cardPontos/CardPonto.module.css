@@ -17,12 +17,19 @@
   height: 100%;
   grid-column: 1;
 }
-.container h2 {
+.titleEdit {
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .container p {
   margin-bottom: 3px;
 }
 .endereco {
   padding-top: 10px;
+}
+button {
+  width: 3em;
+  background-color: #606c38;
 }

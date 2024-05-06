@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar/Navbar";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import style from "./styles/PaginaInicial.module.css";
@@ -58,8 +57,6 @@ function home() {
 
   return (
     <div className={style.container}>
-      <Navbar />
-
       <div>
         <MapContainer
           center={position}
@@ -91,7 +88,7 @@ function home() {
       </div>
 
       <div className={style.infoGeral}>
-        <h2>Informações gerais</h2>
+        <h2>Informações gerais:</h2>
         <div className={style.infoGeralDim}>
           <div className={style.usuarios}>
             <h1>Usuários ativos: {numeroUsuarios}</h1>
