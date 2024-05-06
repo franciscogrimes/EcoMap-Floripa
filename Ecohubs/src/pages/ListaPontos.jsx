@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import CardPonto from "../components/cardPontos/CardPonto";
 import { UtilitsContext } from "../components/context/UtilitsContext";
 import { useContext } from "react";
+import style from "./styles/ListaPontos.module.css";
 
 function ListaPontos() {
   const [pontos, setPontos] = useState([]);
@@ -20,21 +21,23 @@ function ListaPontos() {
 
   return (
     <div>
-      {pontos.map((ponto, index) => (
-        <CardPonto
-          id={ponto.id}
-          nomeLocal={ponto.nomeLocal}
-          descricao={ponto.descricao}
-          residuos={ponto.residuos}
-          neighborhood={ponto.neighborhood}
-          city={ponto.city}
-          state={ponto.state}
-          latitude={ponto.latitude}
-          longitude={ponto.longitude}
-          key={index}
-          handleRemove={removePonto}
-        />
-      ))}
+      <div className={style.container}>
+        {pontos.map((ponto, index) => (
+          <CardPonto
+            id={ponto.id}
+            nomeLocal={ponto.nomeLocal}
+            descricao={ponto.descricao}
+            residuos={ponto.residuos}
+            neighborhood={ponto.neighborhood}
+            city={ponto.city}
+            state={ponto.state}
+            latitude={ponto.latitude}
+            longitude={ponto.longitude}
+            key={index}
+            handleRemove={removePonto}
+          />
+        ))}
+      </div>
     </div>
   );
 }
