@@ -37,18 +37,31 @@ export const UtilitsContextProvider = ({ children }) => {
   }
 
   function cadastrarUsuario(dadosCadastrais) {
-    fetch("http://localhost:3000/usuarios", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dadosCadastrais),
-    })
-      .then(() => {
-        alert("Usuário cadastrado com sucesso!");
-        window.location.href = "/login";
-      })
-      .catch(() => alert("Erro ao efetuar cadastro do usuário"));
-  }
+    fetch("http://localhost:3000/usuarios")
+      .then((response) => response.json())
+      .then((usuarios) => {
+        const cpfExistente = usuarios.find(
+          (u) => u.cpf === dadosCadastrais.cpf
+        );
 
+        if (cpfExistente) {
+          alert("CPF já cadastrado. Por favor, verifique os dados informados.");
+          return;
+        }
+
+        fetch("http://localhost:3000/usuarios", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dadosCadastrais),
+        })
+          .then(() => {
+            alert("Usuário cadastrado com sucesso!");
+            window.location.href = "/login";
+          })
+          .catch(() => alert("Erro ao efetuar cadastro do usuário"));
+      })
+      .catch((error) => console.error("Erro ao buscar usuários:", error));
+  }
   function cadastrarPonto(dadosPonto) {
     fetch("http://localhost:3000/pontosColeta", {
       method: "POST",
