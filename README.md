@@ -7,12 +7,13 @@ contribuindo para a preservação do meio ambiente e para a promoção de práti
 
 <h3>Técnicas e Tecnologias Utilizadas:</h3>
 
-React: Framework JavaScript utilizado para o desenvolvimento da interface do usuário e demais paginas do software.
-viaCep: API utilizada para buscar informações de endereço a partir do CEP informado pelo usuário, facilitando o preenchimento automático de dados no cadastro de novos pontos de coleta.
-Leaflet: Biblioteca de mapeamento interativo utilizada para exibir os pontos de coleta de lixo em um mapa interativo, permitindo aos usuários visualizarem e navegarem facilmente pelos locais disponíveis.
-React Hook Form: Biblioteca utilizada para simplificar e gerenciar o formulário de cadastro de novos pontos de coleta, oferecendo validação de dados em tempo real e facilitando a interação do usuário com o sistema.
-OpenCage Geocoding API: API utilizada para complementar as informações de latitude e longitude dos pontos de coleta, permitindo uma precisão maior na localização dos locais no mapa.
-
+<ul>
+<li>React: Framework JavaScript utilizado para o desenvolvimento da interface do usuário e demais paginas do software.</li>
+<li>viaCep: API utilizada para buscar informações de endereço a partir do CEP informado pelo usuário, facilitando o preenchimento automático de dados no cadastro de novos pontos de coleta.</li>
+<li>Leaflet: Biblioteca de mapeamento interativo utilizada para exibir os pontos de coleta de lixo em um mapa interativo, permitindo aos usuários visualizarem e navegarem facilmente pelos locais disponíveis.</li>
+<li>React Hook Form: Biblioteca utilizada para simplificar e gerenciar o formulário de cadastro de novos pontos de coleta, oferecendo validação de dados em tempo real e facilitando a interação do usuário com o sistema.</li>
+<li>OpenCage Geocoding API: API utilizada para complementar as informações de latitude e longitude dos pontos de coleta, permitindo uma precisão maior na localização dos locais no mapa.</li>
+</ul>
 
 
   https://github.com/franciscogrimes/Ecohubs/assets/150201451/729084b7-4a7c-4996-b18b-162afcab3b65 
