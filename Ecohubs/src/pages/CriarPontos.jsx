@@ -1,8 +1,9 @@
 import Navbar from "../components/Navbar/Navbar";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UtilitsContext } from "../components/context/UtilitsContext";
 import style from "./styles/CriarPontos.module.css";
+import { useParams } from "react-router-dom";
 
 function criaPontos() {
   const { register, handleSubmit, setValue, getValues } = useForm();
@@ -43,11 +44,48 @@ function criaPontos() {
       });
   }
 
+  const { id } = useParams(); // Obtém o ID do ponto da URL
+
+  useEffect(() => {
+    if (id) {
+      fetch(`http://localhost:3000/pontosColeta/${id}`)
+        .then((resp) => resp.json())
+        .then((data) => {
+          setValue("nomeLocal", data.nomeLocal);
+          setValue("id", data.id);
+          setValue("descricao", data.descricao);
+          setValue("residuos", data.residuos);
+          setValue("cep", data.cep);
+          setValue("latitude", data.latitude);
+          setValue("longitude", data.longitude);
+          setValue("neighborhood", data.neighborhood);
+          setValue("city", data.city);
+          setValue("state", data.state);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [id]);
+
   const { cadastrarPonto } = useContext(UtilitsContext);
 
-  const onSubmit = (dadosPonto) => {
-    console.log("Ponto de coleta cadastrado", dadosPonto);
-    cadastrarPonto(dadosPonto);
+  const onSubmit = async (dadosPonto) => {
+    if (id) {
+      try {
+        await fetch(`http://localhost:3000/pontosColeta/${dadosPonto.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dadosPonto),
+        });
+        alert("Ponto de coleta atualizado com sucesso!");
+      } catch (error) {
+        console.error("Erro ao atualizar ponto de coleta:", error);
+        alert("Erro ao atualizar ponto de coleta");
+      }
+    } else {
+      cadastrarPonto(dadosPonto);
+    }
   };
 
   return (

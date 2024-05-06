@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { UtilitsContext } from "../../components/context/UtilitsContext";
 import { useContext } from "react";
 import "boxicons";
+import { Link } from "react-router-dom";
 
 function CardPonto({
   id,
@@ -46,10 +47,10 @@ function CardPonto({
           <h2>{nomeLocal}</h2>
           {window.location.pathname === "/list-points" && (
             <>
-              <button>
+              <Link to={`/create-points/${id}`}>
                 <box-icon name="pencil" color="#fefae0"></box-icon>
-              </button>
-              <button onClick={() => handleRemove(id)}>
+              </Link>
+              <button onClick={() => handleRemove(id)} className={style.btn}>
                 <box-icon name="trash" color="#fefae0"></box-icon>
               </button>
             </>
