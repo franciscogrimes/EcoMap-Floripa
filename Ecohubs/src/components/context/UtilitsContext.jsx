@@ -61,7 +61,7 @@ export const UtilitsContextProvider = ({ children }) => {
       .catch(() => alert("Erro ao realizar cadastro do ponto"));
   }
 
-  function removePonto() {
+  function removePonto(id) {
     fetch(`http://localhost:3000/pontosColeta/${id}`, {
       method: "DELETE",
       headers: {
