@@ -57,6 +57,7 @@ export const UtilitsContextProvider = ({ children }) => {
           .then(() => {
             alert("Usuário cadastrado com sucesso!");
             window.location.href = "/login";
+            setUsuarios(prevUsuarios => [...prevUsuarios, dadosCadastrais])
           })
           .catch(() => alert("Erro ao efetuar cadastro do usuário"));
       })
