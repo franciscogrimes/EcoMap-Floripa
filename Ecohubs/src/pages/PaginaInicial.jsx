@@ -70,10 +70,7 @@ function home() {
 
           {pontosColeta.pontosColeta.map((ponto, index) => (
             <Marker
-              position={[
-                parseFloat(ponto.latitude),
-                parseFloat(ponto.longitude),
-              ]}
+              position={[ponto.latitude, ponto.longitude]}
               icon={markerIcon}
               key={index}
             >
