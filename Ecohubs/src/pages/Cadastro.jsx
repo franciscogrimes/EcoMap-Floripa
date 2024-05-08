@@ -89,16 +89,16 @@ function Cadastro() {
               <p className={style.error}>{errors.email.message}</p>
             )}
 
-            <label htmlFor="password">Senha:</label>
+            <label htmlFor="senha">Senha:</label>
             <input
               type="password"
-              name="password"
-              {...register("password", {
+              name="senha"
+              {...register("senha", {
                 required: "Campo obrigatório",
               })}
             />
-            {errors.password && (
-              <p className={style.error}>{errors.password.message}</p>
+            {errors.senha && (
+              <p className={style.error}>{errors.senha.message}</p>
             )}
           </div>
         </div>
