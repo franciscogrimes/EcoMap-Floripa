@@ -6,11 +6,16 @@ import style from "./styles/CriarPontos.module.css";
 import { useParams } from "react-router-dom";
 
 function criaPontos() {
-  const { register, handleSubmit, setValue, getValues } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    getValues,
+    formState: { errors },
+  } = useForm(); // Assegure-se de desestruturar `errors` do `formState`
 
   const enderecoCompleto = async () => {
     let CEP = getValues("cep");
-
     if (!!CEP && CEP.length === 8) {
       try {
         const response = await fetch(`https://viacep.com.br/ws/${CEP}/json/`);
@@ -23,20 +28,17 @@ function criaPontos() {
       }
     }
   };
-  function coordenadas() {
-    let neighborhood = getValues("neighborhood");
-    const apiKey = "b0jeJ+AUCv55Zc/kx8eboQ==UMUBxl1alnhtCHrS";
 
-    fetch(
-      `https://api.api-ninjas.com/v1/geocoding?city=${neighborhood}&country=Brasil`
-    )
+  function coordenadas() {
+    let CEP = getValues("cep");
+    const apiKey = "e35cd8562d6244afb998eeb2587acac9";
+    fetch(`https://api.opencagedata.com/geocode/v1/json?q=${CEP}&key=${apiKey}`)
       .then((response) => response.json())
       .then((data) => {
-        if (data) {
-          const { latitude, longitude } = data;
-          console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-          setValue("latitude", latitude);
-          setValue("longitude", longitude);
+        if (data.results.length > 0) {
+          const { lat, lng } = data.results[0].geometry;
+          setValue("latitude", lat);
+          setValue("longitude", lng);
         } else {
           console.error("Nenhum resultado encontrado para o CEP fornecido.");
         }
@@ -46,8 +48,7 @@ function criaPontos() {
       });
   }
 
-  const { id } = useParams(); // Obtém o ID do ponto da URL
-
+  const { id } = useParams();
   useEffect(() => {
     if (id) {
       fetch(`http://localhost:3000/pontosColeta/${id}`)
@@ -94,7 +95,7 @@ function criaPontos() {
     <div className={style.container}>
       <Navbar />
       <div>
-        <form className={style.form}>
+        <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={style.title}>
             <h1>Cadastro de Pontos de coleta</h1>
           </div>
@@ -106,11 +107,19 @@ function criaPontos() {
                 type="text"
                 name="nomeLocal"
                 {...register("nomeLocal", {
-                  required: true,
-                  maxLength: 50,
-                  minLength: 9,
+                  required: "Nome do local é obrigatório",
+                  maxLength: {
+                    value: 50,
+                    message:
+                      "Nome do local não pode ter mais que 50 caracteres",
+                  },
+                  minLength: {
+                    value: 9,
+                    message: "Nome do local deve ter pelo menos 9 caracteres",
+                  },
                 })}
               />
+              {errors.nomeLocal && <p>{errors.nomeLocal.message}</p>}
             </div>
             <div className={style.id}>
               <label htmlFor="id">Identificador do usuário: </label>
@@ -118,11 +127,18 @@ function criaPontos() {
                 type="number"
                 name="id"
                 {...register("id", {
-                  required: true,
-                  maxLength: 2,
-                  minLength: 1,
+                  required: "Identificador é obrigatório",
+                  maxLength: {
+                    value: 2,
+                    message: "Identificador deve ter no máximo 2 dígitos",
+                  },
+                  minLength: {
+                    value: 1,
+                    message: "Identificador deve ter pelo menos 1 dígito",
+                  },
                 })}
               />
+              {errors.id && <p>{errors.id.message}</p>}
             </div>
           </div>
           <div className={style.descricao}>
@@ -132,11 +148,18 @@ function criaPontos() {
               type="text"
               name="descricao"
               {...register("descricao", {
-                required: true,
-                maxLength: 200,
-                minLength: 15,
+                required: "Descrição é obrigatória",
+                maxLength: {
+                  value: 200,
+                  message: "Descrição não pode ter mais que 200 caracteres",
+                },
+                minLength: {
+                  value: 15,
+                  message: "Descrição deve ter pelo menos 15 caracteres",
+                },
               })}
             />
+            {errors.descricao && <p>{errors.descricao.message}</p>}
           </div>
           <div className={style.tipoLocal}>
             <div className={style.residuos}>
@@ -152,6 +175,7 @@ function criaPontos() {
                 <option value="entulhos">Entulho</option>
                 <option value="Todos">Qualquer residuo</option>
               </select>
+              {errors.residuos && <p>{errors.residuos.message}</p>}
             </div>
             <div className={style.cep}>
               <label htmlFor="cep">CEP:</label>
@@ -159,14 +183,21 @@ function criaPontos() {
                 type="text"
                 name="cep"
                 {...register("cep", {
-                  required: true,
-                  maxLength: 8,
-                  minLength: 8,
+                  required: "CEP é obrigatório",
+                  maxLength: {
+                    value: 8,
+                    message: "CEP deve ter exatamente 8 caracteres",
+                  },
+                  minLength: {
+                    value: 8,
+                    message: "CEP deve ter exatamente 8 caracteres",
+                  },
                   onBlur: () => {
                     coordenadas(), enderecoCompleto();
                   },
                 })}
               />
+              {errors.cep && <p>{errors.cep.message}</p>}
             </div>
           </div>
           <div className={style.latLong}>
@@ -197,7 +228,7 @@ function criaPontos() {
               <input type="text" name="state" {...register("state")} />
             </div>
           </div>
-          <button onClick={handleSubmit(onSubmit)}>Cadastrar Ponto</button>
+          <button type="submit">Cadastrar Ponto</button>
         </form>
       </div>
     </div>
