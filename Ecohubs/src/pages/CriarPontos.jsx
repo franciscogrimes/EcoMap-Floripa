@@ -24,17 +24,19 @@ function criaPontos() {
     }
   };
   function coordenadas() {
-    let CEP = getValues("cep");
-    const apiKey = "e35cd8562d6244afb998eeb2587acac9";
+    let neighborhood = getValues("neighborhood");
+    const apiKey = "b0jeJ+AUCv55Zc/kx8eboQ==UMUBxl1alnhtCHrS";
 
-    fetch(`https://api.opencagedata.com/geocode/v1/json?q=${CEP}&key=${apiKey}`)
+    fetch(
+      `https://api.api-ninjas.com/v1/geocoding?city=${neighborhood}&country=Brasil`
+    )
       .then((response) => response.json())
       .then((data) => {
-        if (data.results.length > 0) {
-          const { lat, lng } = data.results[0].geometry;
-          console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-          setValue("latitude", lat);
-          setValue("longitude", lng);
+        if (data) {
+          const { latitude, longitude } = data;
+          console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+          setValue("latitude", latitude);
+          setValue("longitude", longitude);
         } else {
           console.error("Nenhum resultado encontrado para o CEP fornecido.");
         }
