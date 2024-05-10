@@ -6,7 +6,13 @@ import style from "./styles/CriarPontos.module.css";
 import { useParams } from "react-router-dom";
 
 function criaPontos() {
-  const { register, handleSubmit, setValue, getValues, formState: { errors } } = useForm(); // Assegure-se de desestruturar `errors` do `formState`
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    getValues,
+    formState: { errors },
+  } = useForm(); // Assegure-se de desestruturar `errors` do `formState`
 
   const enderecoCompleto = async () => {
     let CEP = getValues("cep");
@@ -104,12 +110,13 @@ function criaPontos() {
                   required: "Nome do local é obrigatório",
                   maxLength: {
                     value: 50,
-                    message: "Nome do local não pode ter mais que 50 caracteres"
+                    message:
+                      "Nome do local não pode ter mais que 50 caracteres",
                   },
                   minLength: {
                     value: 9,
-                    message: "Nome do local deve ter pelo menos 9 caracteres"
-                  }
+                    message: "Nome do local deve ter pelo menos 9 caracteres",
+                  },
                 })}
               />
               {errors.nomeLocal && <p>{errors.nomeLocal.message}</p>}
@@ -123,15 +130,15 @@ function criaPontos() {
                   required: "Identificador é obrigatório",
                   maxLength: {
                     value: 2,
-                    message: "Identificador deve ter no máximo 2 dígitos"
+                    message: "Identificador deve ter no máximo 2 dígitos",
                   },
                   minLength: {
                     value: 1,
-                    message: "Identificador deve ter pelo menos 1 dígito"
+                    message: "Identificador deve ter pelo menos 1 dígito",
                   },
                 })}
               />
-             {errors.id && <p>{errors.id.message}</p>}
+              {errors.id && <p>{errors.id.message}</p>}
             </div>
           </div>
           <div className={style.descricao}>
@@ -144,12 +151,12 @@ function criaPontos() {
                 required: "Descrição é obrigatória",
                 maxLength: {
                   value: 200,
-                  message: "Descrição não pode ter mais que 200 caracteres"
+                  message: "Descrição não pode ter mais que 200 caracteres",
                 },
                 minLength: {
                   value: 15,
-                  message: "Descrição deve ter pelo menos 15 caracteres"
-                }
+                  message: "Descrição deve ter pelo menos 15 caracteres",
+                },
               })}
             />
             {errors.descricao && <p>{errors.descricao.message}</p>}
@@ -179,18 +186,18 @@ function criaPontos() {
                   required: "CEP é obrigatório",
                   maxLength: {
                     value: 8,
-                    message: "CEP deve ter exatamente 8 caracteres"
+                    message: "CEP deve ter exatamente 8 caracteres",
                   },
                   minLength: {
                     value: 8,
-                    message: "CEP deve ter exatamente 8 caracteres"
+                    message: "CEP deve ter exatamente 8 caracteres",
                   },
                   onBlur: () => {
                     coordenadas(), enderecoCompleto();
                   },
                 })}
               />
-            {errors.cep && <p>{errors.cep.message}</p>}
+              {errors.cep && <p>{errors.cep.message}</p>}
             </div>
           </div>
           <div className={style.latLong}>
