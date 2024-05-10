@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { UtilitsContext } from "../components/context/UtilitsContext";
 import style from "./styles/Cadastro.module.css";
+import { Link } from "react-router-dom";
+
 
 function Cadastro() {
   const {
@@ -133,7 +135,12 @@ function Cadastro() {
             <input type="text" name="state" {...register("state")} />
           </div>
         </div>
+        <div className={style.btn}>
+        <button>
+          <Link to='/login' path='relative'>Voltar</Link>
+        </button>
         <button onClick={handleSubmit(onSubmit)}>Cadastrar Usuário</button>
+        </div>
       </form>
     </div>
   );
