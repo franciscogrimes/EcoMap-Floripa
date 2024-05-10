@@ -67,3 +67,10 @@ select {
   display: flex;
   flex-direction: column;
 }
+a {
+  text-decoration: none;
+  color: #606c38;
+}
+.btn{
+  display: flex;
+}
