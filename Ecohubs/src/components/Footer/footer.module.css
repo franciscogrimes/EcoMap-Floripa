@@ -1,0 +1,13 @@
+.container{
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #606c38;
+    font-weight: bold;
+    color: #FEFAE0;
+}
+.links{
+    display: flex;
+    gap: 10px;
+}
